@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Acne Photo Benchmark</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="toolbar">
+        <div class="toolbar-group">
+          <label class="field-label" for="sample-select">Sample</label>
+          <select id="sample-select"></select>
+        </div>
+        <div class="toolbar-group upload-group">
+          <label class="field-label" for="upload-input">Upload photo</label>
+          <input id="upload-input" type="file" accept="image/*" />
+        </div>
+        <div class="toolbar-group slider-group">
+          <label class="field-label" for="strength-input">Strength</label>
+          <input id="strength-input" type="range" min="0" max="100" value="60" />
+          <span id="strength-value">60</span>
+        </div>
+        <div class="toolbar-group">
+          <label class="field-label" for="view-select">View</label>
+          <select id="view-select">
+            <option value="processed">Processed</option>
+            <option value="mask">Mask</option>
+            <option value="split">Split</option>
+            <option value="difference">Difference</option>
+          </select>
+        </div>
+        <div class="toolbar-group action-group">
+          <button id="run-button" type="button">Run benchmark</button>
+        </div>
+      </section>
+
+      <section class="source-bar">
+        <div id="status-line">Loading benchmark assets…</div>
+        <div id="sample-meta"></div>
+      </section>
+
+      <section class="results-grid">
+        <article class="result-card original-card">
+          <header>
+            <h2>Original</h2>
+          </header>
+          <canvas id="original-canvas"></canvas>
+        </article>
+        <article class="result-card">
+          <header>
+            <h2>Candidate A</h2>
+            <p>Localized red-excess correction</p>
+          </header>
+          <canvas id="candidate-a-canvas"></canvas>
+          <div class="metrics" id="candidate-a-metrics"></div>
+        </article>
+        <article class="result-card">
+          <header>
+            <h2>Candidate B</h2>
+            <p>Edge-aware blemish smoothing</p>
+          </header>
+          <canvas id="candidate-b-canvas"></canvas>
+          <div class="metrics" id="candidate-b-metrics"></div>
+        </article>
+        <article class="result-card highlight-card">
+          <header>
+            <h2>Candidate C</h2>
+            <p>Balanced blend</p>
+          </header>
+          <canvas id="candidate-c-canvas"></canvas>
+          <div class="metrics" id="candidate-c-metrics"></div>
+        </article>
+      </section>
+
+      <section class="notes-panel">
+        <h3>Notes</h3>
+        <ul>
+          <li>Use `npm run benchmark:download-samples` to fetch the starter Wikimedia Commons set.</li>
+          <li>Use `npm run benchmark:serve` and open `http://127.0.0.1:4173/benchmark/`.</li>
+          <li>The benchmark downscales images for fast iteration and uses CPU processing so formulas can be tuned before porting to the webcam shader.</li>
+        </ul>
+      </section>
+    </main>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

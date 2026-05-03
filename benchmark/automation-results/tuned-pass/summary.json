@@ -1,0 +1,1095 @@
+{
+  "rootUrl": "http://127.0.0.1:4173/",
+  "sampleCount": 9,
+  "runCount": 27,
+  "failed": [],
+  "flagged": [
+    {
+      "sampleId": "commons-0601",
+      "strength": 40,
+      "issues": [
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "84.3",
+        "blemishCoverage": "10.6",
+        "avgCorrection": "0.054",
+        "detailRetention": "0.363"
+      }
+    },
+    {
+      "sampleId": "commons-0601",
+      "strength": 60,
+      "issues": [
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "84.3",
+        "blemishCoverage": "14.8",
+        "avgCorrection": "0.078",
+        "detailRetention": "0.359"
+      }
+    },
+    {
+      "sampleId": "commons-0601",
+      "strength": 80,
+      "issues": [
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "84.3",
+        "blemishCoverage": "20.9",
+        "avgCorrection": "0.117",
+        "detailRetention": "0.353"
+      }
+    },
+    {
+      "sampleId": "commons-0602",
+      "strength": 40,
+      "issues": [
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "74.9",
+        "blemishCoverage": "20.0",
+        "avgCorrection": "0.077",
+        "detailRetention": "0.361"
+      }
+    },
+    {
+      "sampleId": "commons-0602",
+      "strength": 60,
+      "issues": [
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "74.9",
+        "blemishCoverage": "23.4",
+        "avgCorrection": "0.104",
+        "detailRetention": "0.356"
+      }
+    },
+    {
+      "sampleId": "commons-0602",
+      "strength": 80,
+      "issues": [
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "74.9",
+        "blemishCoverage": "28.6",
+        "avgCorrection": "0.143",
+        "detailRetention": "0.349"
+      }
+    },
+    {
+      "sampleId": "commons-0603",
+      "strength": 40,
+      "issues": [
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "75.3",
+        "blemishCoverage": "14.2",
+        "avgCorrection": "0.060",
+        "detailRetention": "0.425"
+      }
+    },
+    {
+      "sampleId": "commons-0603",
+      "strength": 60,
+      "issues": [
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "75.3",
+        "blemishCoverage": "17.1",
+        "avgCorrection": "0.082",
+        "detailRetention": "0.421"
+      }
+    },
+    {
+      "sampleId": "commons-0603",
+      "strength": 80,
+      "issues": [
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "75.3",
+        "blemishCoverage": "21.0",
+        "avgCorrection": "0.111",
+        "detailRetention": "0.415"
+      }
+    },
+    {
+      "sampleId": "commons-acne-2",
+      "strength": 40,
+      "issues": [
+        "blemishCoverage_outlier",
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "71.9",
+        "blemishCoverage": "0.0",
+        "avgCorrection": "0.006",
+        "detailRetention": "0.308"
+      }
+    },
+    {
+      "sampleId": "commons-acne-2",
+      "strength": 60,
+      "issues": [
+        "blemishCoverage_outlier",
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "71.9",
+        "blemishCoverage": "0.0",
+        "avgCorrection": "0.007",
+        "detailRetention": "0.308"
+      }
+    },
+    {
+      "sampleId": "commons-acne-2",
+      "strength": 80,
+      "issues": [
+        "blemishCoverage_outlier",
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "71.9",
+        "blemishCoverage": "0.0",
+        "avgCorrection": "0.008",
+        "detailRetention": "0.308"
+      }
+    },
+    {
+      "sampleId": "commons-oily-skin",
+      "strength": 40,
+      "issues": [
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "82.1",
+        "blemishCoverage": "10.6",
+        "avgCorrection": "0.054",
+        "detailRetention": "0.314"
+      }
+    },
+    {
+      "sampleId": "commons-oily-skin",
+      "strength": 60,
+      "issues": [
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "82.1",
+        "blemishCoverage": "14.8",
+        "avgCorrection": "0.081",
+        "detailRetention": "0.309"
+      }
+    },
+    {
+      "sampleId": "commons-oily-skin",
+      "strength": 80,
+      "issues": [
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "82.1",
+        "blemishCoverage": "23.0",
+        "avgCorrection": "0.129",
+        "detailRetention": "0.301"
+      }
+    },
+    {
+      "sampleId": "commons-teenager-acne",
+      "strength": 40,
+      "issues": [
+        "blemishCoverage_outlier",
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "75.0",
+        "blemishCoverage": "0.2",
+        "avgCorrection": "0.010",
+        "detailRetention": "0.158"
+      }
+    },
+    {
+      "sampleId": "commons-teenager-acne",
+      "strength": 60,
+      "issues": [
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "75.0",
+        "blemishCoverage": "0.4",
+        "avgCorrection": "0.014",
+        "detailRetention": "0.158"
+      }
+    },
+    {
+      "sampleId": "commons-teenager-acne",
+      "strength": 80,
+      "issues": [
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "75.0",
+        "blemishCoverage": "1.2",
+        "avgCorrection": "0.019",
+        "detailRetention": "0.157"
+      }
+    },
+    {
+      "sampleId": "commons-girl-pimples",
+      "strength": 40,
+      "issues": [
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "84.9",
+        "blemishCoverage": "11.9",
+        "avgCorrection": "0.057",
+        "detailRetention": "0.209"
+      }
+    },
+    {
+      "sampleId": "commons-girl-pimples",
+      "strength": 60,
+      "issues": [
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "84.9",
+        "blemishCoverage": "20.5",
+        "avgCorrection": "0.103",
+        "detailRetention": "0.205"
+      }
+    },
+    {
+      "sampleId": "commons-girl-pimples",
+      "strength": 80,
+      "issues": [
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "84.9",
+        "blemishCoverage": "32.8",
+        "avgCorrection": "0.172",
+        "detailRetention": "0.200"
+      }
+    },
+    {
+      "sampleId": "commons-face-acne-11",
+      "strength": 40,
+      "issues": [
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "77.8",
+        "blemishCoverage": "5.5",
+        "avgCorrection": "0.035",
+        "detailRetention": "0.297"
+      }
+    },
+    {
+      "sampleId": "commons-face-acne-11",
+      "strength": 60,
+      "issues": [
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "77.8",
+        "blemishCoverage": "7.3",
+        "avgCorrection": "0.049",
+        "detailRetention": "0.295"
+      }
+    },
+    {
+      "sampleId": "commons-face-acne-11",
+      "strength": 80,
+      "issues": [
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "77.8",
+        "blemishCoverage": "10.3",
+        "avgCorrection": "0.071",
+        "detailRetention": "0.292"
+      }
+    },
+    {
+      "sampleId": "commons-face-acne-12",
+      "strength": 40,
+      "issues": [
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "75.9",
+        "blemishCoverage": "7.0",
+        "avgCorrection": "0.040",
+        "detailRetention": "0.257"
+      }
+    },
+    {
+      "sampleId": "commons-face-acne-12",
+      "strength": 60,
+      "issues": [
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "75.9",
+        "blemishCoverage": "9.2",
+        "avgCorrection": "0.057",
+        "detailRetention": "0.255"
+      }
+    },
+    {
+      "sampleId": "commons-face-acne-12",
+      "strength": 80,
+      "issues": [
+        "candidateC_detail_far_below_B"
+      ],
+      "candidateC": {
+        "skinCoverage": "75.9",
+        "blemishCoverage": "12.9",
+        "avgCorrection": "0.084",
+        "detailRetention": "0.251"
+      }
+    }
+  ],
+  "results": [
+    {
+      "sourceId": "commons-0601",
+      "sourceName": "0601 Acne Vulgaris",
+      "strengthPercent": 40,
+      "width": 870,
+      "height": 547,
+      "candidates": {
+        "a": {
+          "skinCoverage": "84.3",
+          "blemishCoverage": "2.1",
+          "avgCorrection": "0.009",
+          "detailRetention": "0.792"
+        },
+        "b": {
+          "skinCoverage": "84.3",
+          "blemishCoverage": "3.0",
+          "avgCorrection": "0.056",
+          "detailRetention": "0.792"
+        },
+        "c": {
+          "skinCoverage": "84.3",
+          "blemishCoverage": "10.6",
+          "avgCorrection": "0.054",
+          "detailRetention": "0.363"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-0601",
+      "sourceName": "0601 Acne Vulgaris",
+      "strengthPercent": 60,
+      "width": 870,
+      "height": 547,
+      "candidates": {
+        "a": {
+          "skinCoverage": "84.3",
+          "blemishCoverage": "3.1",
+          "avgCorrection": "0.015",
+          "detailRetention": "0.792"
+        },
+        "b": {
+          "skinCoverage": "84.3",
+          "blemishCoverage": "4.5",
+          "avgCorrection": "0.071",
+          "detailRetention": "0.792"
+        },
+        "c": {
+          "skinCoverage": "84.3",
+          "blemishCoverage": "14.8",
+          "avgCorrection": "0.078",
+          "detailRetention": "0.359"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-0601",
+      "sourceName": "0601 Acne Vulgaris",
+      "strengthPercent": 80,
+      "width": 870,
+      "height": 547,
+      "candidates": {
+        "a": {
+          "skinCoverage": "84.3",
+          "blemishCoverage": "5.1",
+          "avgCorrection": "0.026",
+          "detailRetention": "0.792"
+        },
+        "b": {
+          "skinCoverage": "84.3",
+          "blemishCoverage": "7.2",
+          "avgCorrection": "0.091",
+          "detailRetention": "0.792"
+        },
+        "c": {
+          "skinCoverage": "84.3",
+          "blemishCoverage": "20.9",
+          "avgCorrection": "0.117",
+          "detailRetention": "0.353"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-0602",
+      "sourceName": "0602 Acne Vulgaris",
+      "strengthPercent": 40,
+      "width": 779,
+      "height": 472,
+      "candidates": {
+        "a": {
+          "skinCoverage": "74.9",
+          "blemishCoverage": "4.6",
+          "avgCorrection": "0.018",
+          "detailRetention": "0.821"
+        },
+        "b": {
+          "skinCoverage": "74.9",
+          "blemishCoverage": "6.6",
+          "avgCorrection": "0.054",
+          "detailRetention": "0.821"
+        },
+        "c": {
+          "skinCoverage": "74.9",
+          "blemishCoverage": "20.0",
+          "avgCorrection": "0.077",
+          "detailRetention": "0.361"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-0602",
+      "sourceName": "0602 Acne Vulgaris",
+      "strengthPercent": 60,
+      "width": 779,
+      "height": 472,
+      "candidates": {
+        "a": {
+          "skinCoverage": "74.9",
+          "blemishCoverage": "6.1",
+          "avgCorrection": "0.028",
+          "detailRetention": "0.821"
+        },
+        "b": {
+          "skinCoverage": "74.9",
+          "blemishCoverage": "8.7",
+          "avgCorrection": "0.070",
+          "detailRetention": "0.821"
+        },
+        "c": {
+          "skinCoverage": "74.9",
+          "blemishCoverage": "23.4",
+          "avgCorrection": "0.104",
+          "detailRetention": "0.356"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-0602",
+      "sourceName": "0602 Acne Vulgaris",
+      "strengthPercent": 80,
+      "width": 779,
+      "height": 472,
+      "candidates": {
+        "a": {
+          "skinCoverage": "74.9",
+          "blemishCoverage": "8.4",
+          "avgCorrection": "0.042",
+          "detailRetention": "0.821"
+        },
+        "b": {
+          "skinCoverage": "74.9",
+          "blemishCoverage": "11.7",
+          "avgCorrection": "0.091",
+          "detailRetention": "0.821"
+        },
+        "c": {
+          "skinCoverage": "74.9",
+          "blemishCoverage": "28.6",
+          "avgCorrection": "0.143",
+          "detailRetention": "0.349"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-0603",
+      "sourceName": "0603 Acne Vulgaris",
+      "strengthPercent": 40,
+      "width": 859,
+      "height": 509,
+      "candidates": {
+        "a": {
+          "skinCoverage": "75.3",
+          "blemishCoverage": "3.7",
+          "avgCorrection": "0.016",
+          "detailRetention": "0.669"
+        },
+        "b": {
+          "skinCoverage": "75.3",
+          "blemishCoverage": "6.7",
+          "avgCorrection": "0.044",
+          "detailRetention": "0.669"
+        },
+        "c": {
+          "skinCoverage": "75.3",
+          "blemishCoverage": "14.2",
+          "avgCorrection": "0.060",
+          "detailRetention": "0.425"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-0603",
+      "sourceName": "0603 Acne Vulgaris",
+      "strengthPercent": 60,
+      "width": 859,
+      "height": 509,
+      "candidates": {
+        "a": {
+          "skinCoverage": "75.3",
+          "blemishCoverage": "5.0",
+          "avgCorrection": "0.023",
+          "detailRetention": "0.669"
+        },
+        "b": {
+          "skinCoverage": "75.3",
+          "blemishCoverage": "9.1",
+          "avgCorrection": "0.057",
+          "detailRetention": "0.669"
+        },
+        "c": {
+          "skinCoverage": "75.3",
+          "blemishCoverage": "17.1",
+          "avgCorrection": "0.082",
+          "detailRetention": "0.421"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-0603",
+      "sourceName": "0603 Acne Vulgaris",
+      "strengthPercent": 80,
+      "width": 859,
+      "height": 509,
+      "candidates": {
+        "a": {
+          "skinCoverage": "75.3",
+          "blemishCoverage": "6.9",
+          "avgCorrection": "0.035",
+          "detailRetention": "0.669"
+        },
+        "b": {
+          "skinCoverage": "75.3",
+          "blemishCoverage": "12.5",
+          "avgCorrection": "0.074",
+          "detailRetention": "0.669"
+        },
+        "c": {
+          "skinCoverage": "75.3",
+          "blemishCoverage": "21.0",
+          "avgCorrection": "0.111",
+          "detailRetention": "0.415"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-acne-2",
+      "sourceName": "Acne vulgaris 2",
+      "strengthPercent": 40,
+      "width": 490,
+      "height": 900,
+      "candidates": {
+        "a": {
+          "skinCoverage": "71.9",
+          "blemishCoverage": "0.0",
+          "avgCorrection": "0.000",
+          "detailRetention": "0.909"
+        },
+        "b": {
+          "skinCoverage": "71.9",
+          "blemishCoverage": "0.0",
+          "avgCorrection": "0.023",
+          "detailRetention": "0.909"
+        },
+        "c": {
+          "skinCoverage": "71.9",
+          "blemishCoverage": "0.0",
+          "avgCorrection": "0.006",
+          "detailRetention": "0.308"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-acne-2",
+      "sourceName": "Acne vulgaris 2",
+      "strengthPercent": 60,
+      "width": 490,
+      "height": 900,
+      "candidates": {
+        "a": {
+          "skinCoverage": "71.9",
+          "blemishCoverage": "0.0",
+          "avgCorrection": "0.000",
+          "detailRetention": "0.909"
+        },
+        "b": {
+          "skinCoverage": "71.9",
+          "blemishCoverage": "0.0",
+          "avgCorrection": "0.028",
+          "detailRetention": "0.909"
+        },
+        "c": {
+          "skinCoverage": "71.9",
+          "blemishCoverage": "0.0",
+          "avgCorrection": "0.007",
+          "detailRetention": "0.308"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-acne-2",
+      "sourceName": "Acne vulgaris 2",
+      "strengthPercent": 80,
+      "width": 490,
+      "height": 900,
+      "candidates": {
+        "a": {
+          "skinCoverage": "71.9",
+          "blemishCoverage": "0.0",
+          "avgCorrection": "0.000",
+          "detailRetention": "0.909"
+        },
+        "b": {
+          "skinCoverage": "71.9",
+          "blemishCoverage": "0.0",
+          "avgCorrection": "0.032",
+          "detailRetention": "0.909"
+        },
+        "c": {
+          "skinCoverage": "71.9",
+          "blemishCoverage": "0.0",
+          "avgCorrection": "0.008",
+          "detailRetention": "0.308"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-oily-skin",
+      "sourceName": "Acne vulgaris on a very oily skin",
+      "strengthPercent": 40,
+      "width": 900,
+      "height": 675,
+      "candidates": {
+        "a": {
+          "skinCoverage": "82.1",
+          "blemishCoverage": "3.2",
+          "avgCorrection": "0.014",
+          "detailRetention": "0.803"
+        },
+        "b": {
+          "skinCoverage": "82.1",
+          "blemishCoverage": "5.8",
+          "avgCorrection": "0.062",
+          "detailRetention": "0.803"
+        },
+        "c": {
+          "skinCoverage": "82.1",
+          "blemishCoverage": "10.6",
+          "avgCorrection": "0.054",
+          "detailRetention": "0.314"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-oily-skin",
+      "sourceName": "Acne vulgaris on a very oily skin",
+      "strengthPercent": 60,
+      "width": 900,
+      "height": 675,
+      "candidates": {
+        "a": {
+          "skinCoverage": "82.1",
+          "blemishCoverage": "4.7",
+          "avgCorrection": "0.023",
+          "detailRetention": "0.803"
+        },
+        "b": {
+          "skinCoverage": "82.1",
+          "blemishCoverage": "8.1",
+          "avgCorrection": "0.080",
+          "detailRetention": "0.803"
+        },
+        "c": {
+          "skinCoverage": "82.1",
+          "blemishCoverage": "14.8",
+          "avgCorrection": "0.081",
+          "detailRetention": "0.309"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-oily-skin",
+      "sourceName": "Acne vulgaris on a very oily skin",
+      "strengthPercent": 80,
+      "width": 900,
+      "height": 675,
+      "candidates": {
+        "a": {
+          "skinCoverage": "82.1",
+          "blemishCoverage": "7.3",
+          "avgCorrection": "0.039",
+          "detailRetention": "0.803"
+        },
+        "b": {
+          "skinCoverage": "82.1",
+          "blemishCoverage": "11.7",
+          "avgCorrection": "0.106",
+          "detailRetention": "0.803"
+        },
+        "c": {
+          "skinCoverage": "82.1",
+          "blemishCoverage": "23.0",
+          "avgCorrection": "0.129",
+          "detailRetention": "0.301"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-teenager-acne",
+      "sourceName": "Teenager with acne",
+      "strengthPercent": 40,
+      "width": 900,
+      "height": 773,
+      "candidates": {
+        "a": {
+          "skinCoverage": "75.0",
+          "blemishCoverage": "0.1",
+          "avgCorrection": "0.000",
+          "detailRetention": "0.995"
+        },
+        "b": {
+          "skinCoverage": "75.0",
+          "blemishCoverage": "0.1",
+          "avgCorrection": "0.042",
+          "detailRetention": "0.995"
+        },
+        "c": {
+          "skinCoverage": "75.0",
+          "blemishCoverage": "0.2",
+          "avgCorrection": "0.010",
+          "detailRetention": "0.158"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-teenager-acne",
+      "sourceName": "Teenager with acne",
+      "strengthPercent": 60,
+      "width": 900,
+      "height": 773,
+      "candidates": {
+        "a": {
+          "skinCoverage": "75.0",
+          "blemishCoverage": "0.2",
+          "avgCorrection": "0.001",
+          "detailRetention": "0.995"
+        },
+        "b": {
+          "skinCoverage": "75.0",
+          "blemishCoverage": "0.2",
+          "avgCorrection": "0.051",
+          "detailRetention": "0.995"
+        },
+        "c": {
+          "skinCoverage": "75.0",
+          "blemishCoverage": "0.4",
+          "avgCorrection": "0.014",
+          "detailRetention": "0.158"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-teenager-acne",
+      "sourceName": "Teenager with acne",
+      "strengthPercent": 80,
+      "width": 900,
+      "height": 773,
+      "candidates": {
+        "a": {
+          "skinCoverage": "75.0",
+          "blemishCoverage": "0.6",
+          "avgCorrection": "0.003",
+          "detailRetention": "0.995"
+        },
+        "b": {
+          "skinCoverage": "75.0",
+          "blemishCoverage": "0.6",
+          "avgCorrection": "0.061",
+          "detailRetention": "0.995"
+        },
+        "c": {
+          "skinCoverage": "75.0",
+          "blemishCoverage": "1.2",
+          "avgCorrection": "0.019",
+          "detailRetention": "0.157"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-girl-pimples",
+      "sourceName": "Girl Suffering From Pimples",
+      "strengthPercent": 40,
+      "width": 675,
+      "height": 900,
+      "candidates": {
+        "a": {
+          "skinCoverage": "84.9",
+          "blemishCoverage": "3.2",
+          "avgCorrection": "0.014",
+          "detailRetention": "0.937"
+        },
+        "b": {
+          "skinCoverage": "84.9",
+          "blemishCoverage": "4.2",
+          "avgCorrection": "0.070",
+          "detailRetention": "0.937"
+        },
+        "c": {
+          "skinCoverage": "84.9",
+          "blemishCoverage": "11.9",
+          "avgCorrection": "0.057",
+          "detailRetention": "0.209"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-girl-pimples",
+      "sourceName": "Girl Suffering From Pimples",
+      "strengthPercent": 60,
+      "width": 675,
+      "height": 900,
+      "candidates": {
+        "a": {
+          "skinCoverage": "84.9",
+          "blemishCoverage": "4.9",
+          "avgCorrection": "0.024",
+          "detailRetention": "0.937"
+        },
+        "b": {
+          "skinCoverage": "84.9",
+          "blemishCoverage": "6.1",
+          "avgCorrection": "0.091",
+          "detailRetention": "0.937"
+        },
+        "c": {
+          "skinCoverage": "84.9",
+          "blemishCoverage": "20.5",
+          "avgCorrection": "0.103",
+          "detailRetention": "0.205"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-girl-pimples",
+      "sourceName": "Girl Suffering From Pimples",
+      "strengthPercent": 80,
+      "width": 675,
+      "height": 900,
+      "candidates": {
+        "a": {
+          "skinCoverage": "84.9",
+          "blemishCoverage": "7.6",
+          "avgCorrection": "0.042",
+          "detailRetention": "0.937"
+        },
+        "b": {
+          "skinCoverage": "84.9",
+          "blemishCoverage": "9.2",
+          "avgCorrection": "0.119",
+          "detailRetention": "0.937"
+        },
+        "c": {
+          "skinCoverage": "84.9",
+          "blemishCoverage": "32.8",
+          "avgCorrection": "0.172",
+          "detailRetention": "0.200"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-face-acne-11",
+      "sourceName": "\u00dczd\u0259 d\u00fcy\u00fcnl\u00fc v\u0259 kistik s\u0131zanaqlar (Acne Vulgaris) 11",
+      "strengthPercent": 40,
+      "width": 900,
+      "height": 675,
+      "candidates": {
+        "a": {
+          "skinCoverage": "77.8",
+          "blemishCoverage": "1.2",
+          "avgCorrection": "0.005",
+          "detailRetention": "0.833"
+        },
+        "b": {
+          "skinCoverage": "77.8",
+          "blemishCoverage": "1.8",
+          "avgCorrection": "0.055",
+          "detailRetention": "0.833"
+        },
+        "c": {
+          "skinCoverage": "77.8",
+          "blemishCoverage": "5.5",
+          "avgCorrection": "0.035",
+          "detailRetention": "0.297"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-face-acne-11",
+      "sourceName": "\u00dczd\u0259 d\u00fcy\u00fcnl\u00fc v\u0259 kistik s\u0131zanaqlar (Acne Vulgaris) 11",
+      "strengthPercent": 60,
+      "width": 900,
+      "height": 675,
+      "candidates": {
+        "a": {
+          "skinCoverage": "77.8",
+          "blemishCoverage": "1.8",
+          "avgCorrection": "0.009",
+          "detailRetention": "0.833"
+        },
+        "b": {
+          "skinCoverage": "77.8",
+          "blemishCoverage": "2.7",
+          "avgCorrection": "0.068",
+          "detailRetention": "0.833"
+        },
+        "c": {
+          "skinCoverage": "77.8",
+          "blemishCoverage": "7.3",
+          "avgCorrection": "0.049",
+          "detailRetention": "0.295"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-face-acne-11",
+      "sourceName": "\u00dczd\u0259 d\u00fcy\u00fcnl\u00fc v\u0259 kistik s\u0131zanaqlar (Acne Vulgaris) 11",
+      "strengthPercent": 80,
+      "width": 900,
+      "height": 675,
+      "candidates": {
+        "a": {
+          "skinCoverage": "77.8",
+          "blemishCoverage": "2.8",
+          "avgCorrection": "0.015",
+          "detailRetention": "0.833"
+        },
+        "b": {
+          "skinCoverage": "77.8",
+          "blemishCoverage": "4.1",
+          "avgCorrection": "0.083",
+          "detailRetention": "0.833"
+        },
+        "c": {
+          "skinCoverage": "77.8",
+          "blemishCoverage": "10.3",
+          "avgCorrection": "0.071",
+          "detailRetention": "0.292"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-face-acne-12",
+      "sourceName": "\u00dczd\u0259 d\u00fcy\u00fcnl\u00fc v\u0259 kistik s\u0131zanaqlar (Acne Vulgaris) 12",
+      "strengthPercent": 40,
+      "width": 900,
+      "height": 675,
+      "candidates": {
+        "a": {
+          "skinCoverage": "75.9",
+          "blemishCoverage": "1.7",
+          "avgCorrection": "0.007",
+          "detailRetention": "0.922"
+        },
+        "b": {
+          "skinCoverage": "75.9",
+          "blemishCoverage": "2.3",
+          "avgCorrection": "0.063",
+          "detailRetention": "0.922"
+        },
+        "c": {
+          "skinCoverage": "75.9",
+          "blemishCoverage": "7.0",
+          "avgCorrection": "0.040",
+          "detailRetention": "0.257"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-face-acne-12",
+      "sourceName": "\u00dczd\u0259 d\u00fcy\u00fcnl\u00fc v\u0259 kistik s\u0131zanaqlar (Acne Vulgaris) 12",
+      "strengthPercent": 60,
+      "width": 900,
+      "height": 675,
+      "candidates": {
+        "a": {
+          "skinCoverage": "75.9",
+          "blemishCoverage": "2.3",
+          "avgCorrection": "0.012",
+          "detailRetention": "0.922"
+        },
+        "b": {
+          "skinCoverage": "75.9",
+          "blemishCoverage": "3.0",
+          "avgCorrection": "0.078",
+          "detailRetention": "0.922"
+        },
+        "c": {
+          "skinCoverage": "75.9",
+          "blemishCoverage": "9.2",
+          "avgCorrection": "0.057",
+          "detailRetention": "0.255"
+        }
+      }
+    },
+    {
+      "sourceId": "commons-face-acne-12",
+      "sourceName": "\u00dczd\u0259 d\u00fcy\u00fcnl\u00fc v\u0259 kistik s\u0131zanaqlar (Acne Vulgaris) 12",
+      "strengthPercent": 80,
+      "width": 900,
+      "height": 675,
+      "candidates": {
+        "a": {
+          "skinCoverage": "75.9",
+          "blemishCoverage": "3.4",
+          "avgCorrection": "0.019",
+          "detailRetention": "0.922"
+        },
+        "b": {
+          "skinCoverage": "75.9",
+          "blemishCoverage": "4.4",
+          "avgCorrection": "0.096",
+          "detailRetention": "0.922"
+        },
+        "c": {
+          "skinCoverage": "75.9",
+          "blemishCoverage": "12.9",
+          "avgCorrection": "0.084",
+          "detailRetention": "0.251"
+        }
+      }
+    }
+  ],
+  "artifactsDir": "/home/kaleb/Documents/code/webcam ai effects/extension/benchmark/automation-results/tuned-pass"
+}

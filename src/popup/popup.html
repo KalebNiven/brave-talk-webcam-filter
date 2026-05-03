@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Webcam Effects</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-brand">
+        <div class="brand-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect width="32" height="32" rx="6" fill="#3B5BDB"/>
+            <rect x="4" y="4" width="14" height="14" rx="3" fill="#74C0FC"/>
+            <rect x="14" y="14" width="14" height="14" rx="3" fill="#51CF66" opacity="0.9"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">AI Webcam Effects</span>
+          <span class="brand-sub">Open Source · No API Key</span>
+        </div>
+      </div>
+      <div class="header-toggle">
+        <span id="plugin-status-label" class="status-label on">Plugin is ON</span>
+        <button id="plugin-power" class="power-btn active" title="Toggle plugin">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18.36 6.64a9 9 0 1 1-12.73 0"/>
+            <line x1="12" y1="2" x2="12" y2="12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="effects-body" class="effects-body">
+
+      <!-- Video Enhancer -->
+      <div class="effect-row">
+        <div class="effect-header">
+          <span class="effect-label">Video Enhancer</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggle-enhancer" />
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="slider-row" id="enhancer-slider-row" style="display:none;">
+          <input type="range" id="enhancer-level" min="0" max="100" value="60" class="range-slider" />
+        </div>
+      </div>
+
+      <!-- Background -->
+      <div class="effect-row collapsible-row">
+        <div class="effect-header" id="bg-header">
+          <span class="effect-label">Background</span>
+          <div class="bg-header-right">
+            <span class="bg-current-label" id="bg-current-label">None</span>
+            <span class="collapse-arrow" id="bg-arrow">&#8963;</span>
+          </div>
+        </div>
+        <div class="collapsible-body" id="bg-body">
+          <select id="bg-select" class="bg-select">
+            <option value="none">None</option>
+            <option value="blur">Blur</option>
+            <option value="color">Color</option>
+            <option value="image">Image URL</option>
+          </select>
+          <div id="bg-color-row" class="bg-extra" style="display:none;">
+            <label class="sub-label">Color</label>
+            <input type="color" id="bg-color-picker" value="#1a1a2e" class="color-picker" />
+          </div>
+          <div id="bg-image-row" class="bg-extra" style="display:none;">
+            <label class="sub-label">Image URL</label>
+            <input type="text" id="bg-image-url" placeholder="https://..." class="text-input" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Custom Watermark -->
+      <div class="effect-row">
+        <div class="effect-header">
+          <span class="effect-label">Custom Watermark</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggle-watermark" />
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="watermark-extra" id="watermark-text-row" style="display:none;">
+          <input type="text" id="watermark-text" placeholder="Watermark text..." class="text-input" value="My Watermark" />
+        </div>
+      </div>
+
+      <!-- Blur -->
+      <div class="effect-row">
+        <div class="effect-header">
+          <span class="effect-label">Blur</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggle-blur" />
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="slider-row" id="blur-slider-row" style="display:none;">
+          <input type="range" id="blur-level" min="0" max="100" value="50" class="range-slider" />
+        </div>
+      </div>
+
+      <!-- Beautification -->
+      <div class="effect-row">
+        <div class="effect-header">
+          <span class="effect-label">Beautification</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggle-beauty" />
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="slider-row" id="beauty-slider-row" style="display:none;">
+          <input type="range" id="beauty-level" min="0" max="100" value="50" class="range-slider" />
+        </div>
+      </div>
+
+    </div><!-- end effects-body -->
+  </div>
+
+  <script src="popup.bundle.js"></script>
+</body>
+</html>
