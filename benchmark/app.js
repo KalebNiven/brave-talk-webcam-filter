@@ -211,9 +211,10 @@ function blurMask(mask, width, height, radius, stride = 1) {
 }
 
 function computeMasks(data, width, height, strength) {
-  const local = boxBlur(data, width, height, 4, 2);
-  const soft = boxBlur(data, width, height, 2, 1);
-  const strong = boxBlur(data, width, height, 4, 3);
+  const local = boxBlur(data, width, height, 6, 2);
+  const soft = boxBlur(data, width, height, 4, 1);
+  const strong = boxBlur(data, width, height, 8, 3);
+  const heavy = boxBlur(data, width, height, 6, 5);
   const skinMask = new Float32Array(width * height);
   const blemishMask = new Float32Array(width * height);
   const lowContrastMask = new Float32Array(width * height);
@@ -295,7 +296,7 @@ function computeMasks(data, width, height, strength) {
     regionMask[idx] = smoothStep(0.008, 0.03, regionBlur[idx]) * skinMask[idx];
   }
 
-  return { local, soft, strong, skinMask, blemishMask, lowContrastMask, textureMask, clusterMask, regionMask, edgeMask };
+  return { local, soft, strong, heavy, skinMask, blemishMask, lowContrastMask, textureMask, clusterMask, regionMask, edgeMask };
 }
 
 function applyCandidateA(data, width, height, strength, viewMode) {
@@ -461,6 +462,7 @@ function applyCandidateC(data, width, height, strength, viewMode) {
     local,
     soft,
     strong,
+    heavy,
     skinMask,
     blemishMask,
     lowContrastMask,
@@ -488,7 +490,7 @@ function applyCandidateC(data, width, height, strength, viewMode) {
     const regionFloor = region * skin * edge * 0.25;
     const rawSpot = Math.max(spotSeed * (0.84 + region * 0.16), regionFloor);
     const spot = clamp(rawSpot * smoothStep(0.06, 0.22, skin + region * 0.5), 0, 1);
-    const protectedDetail = clamp((0.14 + texture * (0.52 + edge * 0.48)) * (1 - spot * (0.34 + 0.12 * strength)), 0, 1);
+    const protectedDetail = clamp((0.08 + texture * (0.32 + edge * 0.28)) * (1 - spot * (0.6 + 0.25 * strength)), 0, 1);
 
     if (skin > 0.18) skinPixels += 1;
     if (spot > 0.02) blemishPixels += 1;
@@ -498,34 +500,34 @@ function applyCandidateC(data, width, height, strength, viewMode) {
     mask[i + 2] = Math.round(255 * protectedDetail);
     mask[i + 3] = 255;
 
-    const baseAmount = skin * edge * (0.035 + 0.065 * strength) * (0.32 + region * 0.68);
-    const spotAmount = spot * (0.32 + 0.24 * strength);
-    const toneAmount = spot * (0.18 + 0.16 * strength);
-    const finishAmount = skin * region * edge * (0.014 + 0.032 * strength) * (0.34 + spot * 0.46);
+    const baseAmount = skin * edge * (0.12 + 0.18 * strength) * (0.4 + region * 0.6);
+    const spotAmount = spot * (0.55 + 0.35 * strength);
+    const toneAmount = spot * (0.30 + 0.35 * strength);
+    const finishAmount = skin * region * edge * (0.04 + 0.06 * strength) * (0.4 + spot * 0.5);
 
     const baseR = mix(data[i], soft[i], baseAmount);
     const baseG = mix(data[i + 1], soft[i + 1], baseAmount);
     const baseB = mix(data[i + 2], soft[i + 2], baseAmount);
 
-    const lowFreqR = mix(local[i], strong[i], 0.38 + 0.26 * spot);
-    const lowFreqG = mix(local[i + 1], strong[i + 1], 0.28 + 0.18 * spot);
-    const lowFreqB = mix(local[i + 2], strong[i + 2], 0.28 + 0.18 * spot);
+    const lowFreqR = mix(strong[i], heavy[i], 0.4 + 0.3 * spot);
+    const lowFreqG = mix(strong[i + 1], heavy[i + 1], 0.3 + 0.2 * spot);
+    const lowFreqB = mix(strong[i + 2], heavy[i + 2], 0.3 + 0.2 * spot);
 
     const correctedR = mix(baseR, lowFreqR, spotAmount);
     const correctedG = mix(baseG, lowFreqG, spotAmount);
     const correctedB = mix(baseB, lowFreqB, spotAmount);
 
-    const restoredR = clamp(correctedR + (data[i] - soft[i]) * protectedDetail * 0.96, 0, 255);
-    const restoredG = clamp(correctedG + (data[i + 1] - soft[i + 1]) * protectedDetail * 0.96, 0, 255);
-    const restoredB = clamp(correctedB + (data[i + 2] - soft[i + 2]) * protectedDetail * 0.96, 0, 255);
+    const restoredR = clamp(correctedR + (data[i] - soft[i]) * protectedDetail * 0.35, 0, 255);
+    const restoredG = clamp(correctedG + (data[i + 1] - soft[i + 1]) * protectedDetail * 0.35, 0, 255);
+    const restoredB = clamp(correctedB + (data[i + 2] - soft[i + 2]) * protectedDetail * 0.35, 0, 255);
 
-    const tonedR = mix(restoredR, Math.min(restoredR, local[i] * (0.985 + 0.025 * (1 - strength))), toneAmount);
-    const tonedG = mix(restoredG, mix(restoredG, local[i + 1], 0.16), toneAmount * 0.55);
-    const tonedB = mix(restoredB, mix(restoredB, local[i + 2], 0.12), toneAmount * 0.55);
+    const tonedR = mix(restoredR, Math.min(restoredR, local[i] * (0.97 + 0.02 * (1 - strength))), toneAmount);
+    const tonedG = mix(restoredG, mix(restoredG, local[i + 1], 0.28), toneAmount * 0.65);
+    const tonedB = mix(restoredB, mix(restoredB, local[i + 2], 0.22), toneAmount * 0.65);
 
-    processed[i] = clamp(mix(tonedR, soft[i], finishAmount), 0, 255);
-    processed[i + 1] = clamp(mix(tonedG, soft[i + 1], finishAmount), 0, 255);
-    processed[i + 2] = clamp(mix(tonedB, soft[i + 2], finishAmount), 0, 255);
+    processed[i] = clamp(mix(tonedR, strong[i], finishAmount), 0, 255);
+    processed[i + 1] = clamp(mix(tonedG, strong[i + 1], finishAmount), 0, 255);
+    processed[i + 2] = clamp(mix(tonedB, strong[i + 2], finishAmount), 0, 255);
     processed[i + 3] = data[i + 3];
 
     correctionSum += baseAmount + spotAmount + toneAmount + finishAmount;

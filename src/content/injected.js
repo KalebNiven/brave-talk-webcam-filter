@@ -145,29 +145,25 @@ const BEAUTY_FRAG = `
 
   // Bilateral filter - edge-preserving smoothing
   // Spatial weight * Color similarity weight
-  vec3 bilateralFilter(sampler2D tex, vec2 uv, vec2 px, float sigmaSpace, float sigmaColor, float skinMaskValue) {
+  vec3 bilateralFilter(sampler2D tex, vec2 uv, vec2 px, float stride, float sigmaColor, float skinMaskValue) {
     vec3 center = texture2D(tex, uv).rgb;
     vec3 sum = vec3(0.0);
     float weightSum = 0.0;
     
     float centerLuma = luma(center);
-    int kernelRadius = 2;
     
     for (int x = -2; x <= 2; x++) {
       for (int y = -2; y <= 2; y++) {
-        vec2 offset = vec2(float(x), float(y)) * px;
+        vec2 offset = vec2(float(x), float(y)) * px * stride;
         vec3 sampleColor = texture2D(tex, uv + offset).rgb;
         
-        // Spatial Gaussian weight (distance from center)
         float spatialDist = length(vec2(float(x), float(y)));
-        float spatialWeight = exp(-(spatialDist * spatialDist) / (2.0 * sigmaSpace * sigmaSpace));
+        float spatialWeight = exp(-(spatialDist * spatialDist) / 4.5);
         
-        // Color Gaussian weight (difference in luminance)
         float sampleLuma = luma(sampleColor);
         float colorDist = abs(sampleLuma - centerLuma);
         float colorWeight = exp(-(colorDist * colorDist) / (2.0 * sigmaColor * sigmaColor));
         
-        // Combined bilateral weight
         float weight = spatialWeight * colorWeight * skinMaskValue;
         
         sum += sampleColor * weight;
@@ -246,66 +242,55 @@ const BEAUTY_FRAG = `
     float neutralSkin = smoothstep(0.14, 0.36, luma(localAvg)) * (1.0 - smoothstep(0.62, 0.84, luma(localAvg))) * (1.0 - smoothstep(0.05, 0.17, pixelSpread + avgSpread * 0.6)) * (1.0 - smoothstep(0.04, 0.14, abs(luma(original) - luma(localAvg))));
     float skin = clamp(max(smoothstep(0.2, 0.5, (pixelSkin + avgSkin) * 0.5), neutralSkin * 0.58), 0.0, 1.0);
     
-    // Sigma parameters based on strength slider (0-1)
-    float sigmaSpace = 2.0 + u_strength * 3.0;  // 2-5 pixel radius effect
-    float sigmaColor = 0.08 - u_strength * 0.04; // 0.08-0.04 color tolerance
+    // Bilateral filter: single call with stride-based sampling
+    float stride = 3.0 + u_strength * 5.0;  // 3-8 pixel stride
+    float sigmaColor = 0.12 + u_strength * 0.06; // 0.12-0.18 color tolerance
     
-    // Apply bilateral filter only on skin areas
-    vec3 bilateral = bilateralFilter(u_texture, v_texCoord, px, sigmaSpace, sigmaColor, skin);
+    vec3 bilateral = bilateralFilter(u_texture, v_texCoord, px, stride, sigmaColor, skin);
     float cheekBoost = smoothstep(0.12, 0.72, cheek);
-    vec3 strongBilateral = bilateralFilter(
-      u_texture,
-      v_texCoord,
-      px,
-      sigmaSpace * (1.15 + cheekBoost * 0.85),
-      sigmaColor * (1.25 + cheekBoost * 0.18),
-      skin
-    );
-    vec3 glamBilateral = bilateralFilter(
-      u_texture,
-      v_texCoord,
-      px,
-      sigmaSpace * (1.45 + cheekBoost * 0.95),
-      sigmaColor * (1.45 + cheekBoost * 0.22),
-      skin
-    );
+    // Derive stronger smooth versions cheaply from bilateral + localAvg (no extra texture lookups)
+    vec3 strongBilateral = mix(bilateral, localAvg, 0.4 + cheekBoost * 0.15);
+    vec3 glamBilateral = mix(bilateral, localAvg, 0.65 + cheekBoost * 0.15);
     
     // Frequency separation: separate base color (low freq) from texture (high freq)
-    vec3 baseColor = mix(bilateral, strongBilateral, 0.45 + cheekBoost * 0.15);
+    vec3 baseColor = mix(bilateral, strongBilateral, 0.5 + cheekBoost * 0.2);
     vec3 highFreq = original - bilateral;
     
-    // Detect red blemishes only in cheek areas
+    // Detect blemishes: relative redness + absolute redness + texture roughness
     float redBias = max((original.r - ((original.g + original.b) * 0.5)) - (baseColor.r - ((baseColor.g + baseColor.b) * 0.5)) * 0.92, 0.0);
-    float redness = smoothstep(0.004, 0.05, redBias);
-    float roughness = textureRoughness(u_texture, v_texCoord, px, skin);
+    float redness = smoothstep(0.003, 0.035, redBias);
+    float absRed = original.r - (original.g + original.b) * 0.5;
+    float absRedSignal = smoothstep(mix(0.02, 0.005, u_strength), mix(0.06, 0.025, u_strength), absRed);
     float textureDelta = (abs(original.r - bilateral.r) + abs(original.g - bilateral.g) + abs(original.b - bilateral.b)) / 3.0;
-    float localContrast = smoothstep(0.012, 0.055, textureDelta + abs(luma(original) - luma(baseColor)) * 0.65);
+    float roughness = smoothstep(0.01, 0.05, textureDelta) * skin;
+    float localContrast = smoothstep(0.008, 0.04, textureDelta + abs(luma(original) - luma(baseColor)) * 0.65);
     float edge = abs(luma(texture2D(u_texture, v_texCoord + vec2(px.x, 0.0)).rgb) - luma(texture2D(u_texture, v_texCoord - vec2(px.x, 0.0)).rgb)) + abs(luma(texture2D(u_texture, v_texCoord + vec2(0.0, px.y)).rgb) - luma(texture2D(u_texture, v_texCoord - vec2(0.0, px.y)).rgb));
     float edgeReject = 1.0 - smoothstep(0.035, 0.12, edge);
-    float acneSeed = max(redness * (0.86 + cheekBoost * 0.12), max(roughness * 0.76, localContrast * 0.68));
-    float acneFocus = clamp(acneSeed * skin * edgeReject * (0.74 + cheekBoost * 0.16), 0.0, 1.0);
+    float textureBlemish = roughness * smoothstep(0.08, 0.25, skin) * edgeReject;
+    float acneSeed = max(redness * (0.9 + cheekBoost * 0.1), max(absRedSignal * 0.88, max(roughness * 0.8, max(localContrast * 0.72, textureBlemish * 0.82))));
+    float acneFocus = clamp(acneSeed * skin * edgeReject * (0.82 + cheekBoost * 0.18), 0.0, 1.0);
     
-    float baseSmoothAmount = skin * edgeReject * (0.045 + u_strength * 0.06) * (0.34 + cheekBoost * 0.66);
-    float spotAmount = acneFocus * (0.24 + u_strength * 0.28);
-    vec3 acneBase = mix(strongBilateral, glamBilateral, min(1.0, 0.32 + acneFocus * 0.28));
+    float baseSmoothAmount = skin * edgeReject * (0.15 + u_strength * 0.25) * (0.4 + cheekBoost * 0.6);
+    float spotAmount = acneFocus * (0.55 + u_strength * 0.35);
+    vec3 acneBase = mix(strongBilateral, glamBilateral, min(1.0, 0.4 + acneFocus * 0.35));
     vec3 smoothedBase = mix(mix(original, baseColor, baseSmoothAmount), acneBase, spotAmount);
     
-    float detailMask = smoothstep(0.015, 0.09, textureDelta) * (0.42 + edgeReject * 0.58);
-    float detailPreserve = clamp((0.14 + detailMask) * (1.0 - acneFocus * (0.34 + u_strength * 0.12)), 0.0, 1.0);
-    vec3 preservedDetail = highFreq * detailPreserve * 0.92;
+    float detailMask = smoothstep(0.015, 0.09, textureDelta) * (0.3 + edgeReject * 0.4);
+    float detailPreserve = clamp((0.06 + detailMask * 0.3) * (1.0 - acneFocus * (0.65 + u_strength * 0.25)), 0.0, 1.0);
+    vec3 preservedDetail = highFreq * detailPreserve * 0.3;
     
     vec3 result = smoothedBase + preservedDetail;
     
-    float toneCorrectAmount = acneFocus * (0.14 + u_strength * 0.12);
+    float toneCorrectAmount = acneFocus * (0.30 + u_strength * 0.35);
     vec3 toneCorrected = vec3(
-      mix(result.r, min(result.r, baseColor.r * 1.01), toneCorrectAmount),
-      mix(result.g, mix(result.g, baseColor.g, 0.16), toneCorrectAmount * 0.55),
-      mix(result.b, mix(result.b, baseColor.b, 0.1), toneCorrectAmount * 0.55)
+      mix(result.r, min(result.r, baseColor.r * 0.98), toneCorrectAmount),
+      mix(result.g, mix(result.g, baseColor.g, 0.28), toneCorrectAmount * 0.65),
+      mix(result.b, mix(result.b, baseColor.b, 0.22), toneCorrectAmount * 0.65)
     );
     result = mix(result, toneCorrected, toneCorrectAmount);
     
-    float finishAmount = skin * edgeReject * (0.01 + u_strength * 0.022) * (0.34 + acneFocus * 0.42);
-    vec3 finishBase = mix(bilateral, strongBilateral, 0.28 + cheekBoost * 0.18);
+    float finishAmount = skin * edgeReject * (0.05 + u_strength * 0.08) * (0.4 + acneFocus * 0.5);
+    vec3 finishBase = mix(strongBilateral, glamBilateral, 0.35 + cheekBoost * 0.25);
     result = mix(result, finishBase, finishAmount);
     
     // Debug mode: show roughness (red) and skin mask (green)
